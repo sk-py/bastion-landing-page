@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+:root {
+  /* Bastion brand — near-black tinted periwinkle, single-hue system */
+  --bg: #0e0e15;
+  --bg-panel: #17171f;
+  --bg-panel-raised: #1d1d27;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-soft: rgba(255, 255, 255, 0.055);
+
+  --text-primary: #f3f3f7;
+  --text-secondary: #9b9bb0;
+  --text-muted: #64647a;
+
+  /* primary = Bastion's #7D82FB, used as the sole accent hue with lightness variation */
+  --accent-amber: #7d82fb;
+  --accent-amber-soft: #b4b8fe;
+  --accent-amber-dim: rgba(125, 130, 251, 0.14);
+  --accent-blue: #a9adfd;
+  --accent-blue-dim: rgba(169, 173, 253, 0.14);
+  --accent-red: #f2665a;
+  --accent-green: #34d399;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-panel: var(--bg-panel);
+  --color-bg-panel-raised: var(--bg-panel-raised);
+  --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-amber: var(--accent-amber);
+  --color-amber-soft: var(--accent-amber-soft);
+  --color-amber-dim: var(--accent-amber-dim);
+  --color-blue: var(--accent-blue);
+  --color-blue-dim: var(--accent-blue-dim);
+  --color-red: var(--accent-red);
+  --color-green: var(--accent-green);
+
+  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans);
+}
+
+:root {
+  --font-geist-mono: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo,
+    Consolas, monospace;
+  --font-geist-sans: "Geist Variable", ui-sans-serif, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans);
+  background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(125, 130, 251, 0.14),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 55% 40% at 90% 10%,
+      rgba(169, 173, 253, 0.08),
+      transparent
+    );
+}
+
+::selection {
+  background: var(--accent-amber);
+  color: #0e0e15;
+}
+
+.font-mono-tight {
+  font-family: var(--font-geist-mono);
+  letter-spacing: -0.01em;
+}
+
+.bg-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 28px rgba(125, 130, 251, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.blink-caret {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* cursor-follow spotlight, driven by --x / --y set on hover via JS */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    280px circle at var(--x, 50%) var(--y, 50%),
+    rgba(125, 130, 251, 0.14),
+    transparent 70%
+  );
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
