@@ -63,7 +63,7 @@ export function Hero() {
               >
                 Quick install <ArrowRight size={14} />
               </Button>
-              <Button variant="secondary">
+              <Button variant="secondary" onClick={() => window.open("https://github.com/sk-py/bastion", "_blank")}>
                 <Github size={14} /> View source
               </Button>
             </motion.div>
