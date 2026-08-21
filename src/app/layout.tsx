@@ -112,6 +112,9 @@ export const metadata: Metadata = {
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
+  verification: {
+    google: "cAEUD5tUkBH5apNXsw2QlpVeJFLnRg-xBlu5vm0UnEw",
+  }
 };
 
 export default function RootLayout({
@@ -124,7 +127,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
-        <SeoSchema />
+      <SeoSchema />
       <body className="antialiased">{children}</body>
     </html>
   );
