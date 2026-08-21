@@ -26,7 +26,10 @@ export function Cta() {
             >
               Quick install <ArrowRight size={14} />
             </Button>
-            <Button variant="secondary">
+            <Button
+              variant="secondary"
+              onClick={() => window.open("https://github.com/sk-py/bastion", "_blank")}
+            >
               <Github size={14} /> Read the source
             </Button>
           </div>
