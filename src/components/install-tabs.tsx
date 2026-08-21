@@ -8,12 +8,12 @@ const TABS = [
   {
     id: "unix",
     label: "macOS / Linux",
-    command: "curl -fsSL https://bastion.domain.in/install.sh | sh",
+    command: "curl -fsSL https://bastion.skpy.in/install.sh | sh",
   },
   {
     id: "win",
     label: "Windows (PowerShell)",
-    command: "irm https://bastion.domain.in/install.ps1 | iex",
+    command: "irm https://bastion.skpy.in/install.ps1 | iex",
   },
 ];
 
